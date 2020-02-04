@@ -44,6 +44,18 @@ public class TeamManager {
         return null;
     }
 
+    public int getNextTeam() {
+        int teamnumber = 1;
+        for (Team team : teamList) {
+            if (team.getTeamName().startsWith("#")) {
+                if (Integer.parseInt(team.getTeamName().substring(1)) > teamnumber) {
+                    teamnumber = Integer.parseInt(team.getTeamName().substring(1));
+                }
+            }
+        }
+        return teamnumber;
+    }
+
     public void registerTeam(String teamName, String prefix, Color color) {
         teamList.add(new Team(teamName, prefix, color));
     }
@@ -54,5 +66,9 @@ public class TeamManager {
 
     public void registerTeam(String teamName) {
         teamList.add(new Team(teamName));
+    }
+
+    public void registerTeam() {
+        teamList.add(new Team("#" + getNextTeam()));
     }
 }

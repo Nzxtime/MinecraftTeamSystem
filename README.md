@@ -1,1 +1,1 @@
-"# MinecraftTeamSystem" 
+# MinecraftTeamSystem
