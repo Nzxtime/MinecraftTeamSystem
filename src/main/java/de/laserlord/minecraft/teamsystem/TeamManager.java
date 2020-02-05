@@ -11,9 +11,10 @@ public class TeamManager {
     private Plugin plugin;
     private List<Team> teamList;
     private boolean prefix;
+    private int maxDefaultTeamSize = 0;
 
     public TeamManager(Plugin plugin) {
-        teamList = new ArrayList<Team>();
+        this.teamList = new ArrayList<Team>();
         this.plugin = plugin;
         this.prefix = true;
     }
@@ -57,18 +58,31 @@ public class TeamManager {
     }
 
     public void registerTeam(String teamName, String prefix, Color color) {
-        teamList.add(new Team(teamName, prefix, color));
+        addTeamAndFillDefaultSettings(new Team(teamName, prefix, color));
     }
 
     public void registerTeam(String teamName, String prefix) {
-        teamList.add(new Team(teamName, prefix));
+        addTeamAndFillDefaultSettings(new Team(teamName, prefix));
     }
 
     public void registerTeam(String teamName) {
-        teamList.add(new Team(teamName));
+        addTeamAndFillDefaultSettings(new Team(teamName));
     }
 
     public void registerTeam() {
-        teamList.add(new Team("#" + getNextTeam()));
+        addTeamAndFillDefaultSettings(new Team("#" + getNextTeam()));
+    }
+
+    public void addTeamAndFillDefaultSettings(Team team) {
+        team.setMaxTeamSize(this.maxDefaultTeamSize);
+        teamList.add(team);
+    }
+
+    public int getMaxDefaultTeamSize() {
+        return maxDefaultTeamSize;
+    }
+
+    public void setMaxDefaultTeamSize(int maxDefaultTeamSize) {
+        this.maxDefaultTeamSize = maxDefaultTeamSize;
     }
 }
