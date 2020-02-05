@@ -33,13 +33,14 @@ public class Team {
     }
 
     public void addPlayer(Player player) {
-        playerList.add(player);
-        setPlayerPrefix(player);
+        if (!playerList.contains(player)) {
+            playerList.add(player);
+            setPlayerPrefix(player);
+        }
     }
 
     public void removePlayer(Player player) {
         playerList.remove(player);
-
     }
 
     public void sendMessageToTeam(Player sender, String message) {
