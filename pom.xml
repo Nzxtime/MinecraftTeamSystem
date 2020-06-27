@@ -25,4 +25,11 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Nzxtime Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Nzxtime/MinecraftTeamSystem</url>
+        </repository>
+    </distributionManagement>
 </project>
